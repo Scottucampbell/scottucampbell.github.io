@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Scott Campbell — Mechanical Design Engineer</title>
+<title>Scott Campbell P.Eng — Mechanical Design Engineer</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{--navy:#1a2332;--accent:#2563eb;--light:#f8f9fa;--muted:#6b7280;--border:#e5e7eb;--white:#ffffff}
@@ -16,7 +16,6 @@
   .nav-links a:hover{color:var(--navy)}
   section{padding:5rem 2rem;max-width:900px;margin:0 auto}
   .hero{padding:6rem 2rem 5rem;max-width:900px;margin:0 auto}
-  .hero-tag{display:inline-block;background:#eff6ff;color:var(--accent);font-size:0.8rem;font-weight:500;padding:4px 12px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.04em}
   .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem}
   .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin-bottom:2rem}
   .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
@@ -38,13 +37,11 @@
   .project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
   .project-img{height:160px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#9ca3af;font-size:0.8rem;letter-spacing:.04em}
   .project-body{padding:1.25rem}
-  .project-tag{display:inline-block;background:#eff6ff;color:var(--accent);font-size:0.72rem;font-weight:500;padding:2px 10px;border-radius:12px;margin-bottom:.6rem}
+  .project-tag{display:inline-block;font-size:0.72rem;font-weight:500;padding:2px 10px;border-radius:12px;margin-bottom:.6rem}
+  .tag-professional{background:#eff6ff;color:#2563eb}
+  .tag-personal{background:#f0fdf4;color:#16a34a}
   .project-body h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
   .project-body p{font-size:0.85rem;color:var(--muted);line-height:1.5}
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
-  .skill-group h3{font-size:0.85rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
-  .skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
-  .skill-pill{background:var(--light);border:1px solid var(--border);color:#374151;font-size:0.82rem;padding:4px 12px;border-radius:20px}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
   .contact-text p{color:#374151;font-size:0.95rem;margin-bottom:1.5rem}
   .contact-links{display:flex;flex-direction:column;gap:.75rem}
@@ -71,15 +68,14 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#skills">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <div class="hero">
-  <span class="hero-tag">Mechanical Design Engineer</span>
   <h1>Designing precision<br/>engineering solutions</h1>
-  <p>Experienced in CAD design, product development, and manufacturing — turning complex problems into elegant, manufacturable parts.</p>
+  <p>Senior Mechanical Design Engineer with 8+ years of experience building products that are intuitive, manufacturable, and built to last.</p>
   <div class="hero-btns">
     <a href="#projects" class="btn-primary">View my work</a>
     <a href="#contact" class="btn-outline">Get in touch</a>
@@ -91,6 +87,11 @@
 <section id="about">
   <h2>About me</h2>
   <p class="section-sub">Engineer, problem-solver, and lifelong tinkerer.</p>
+  <div style="display:flex;justify-content:center;margin-bottom:2rem;">
+    <div style="width:160px;height:160px;border-radius:50%;background:#e5e7eb;border:3px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span style="font-size:0.8rem;color:#9ca3af;text-align:center;line-height:1.4;">Photo<br/>coming soon</span>
+    </div>
+  </div>
   <div class="about-grid">
     <div class="about-text">
       <p>I'm a Senior Mechanical Design Engineer with 8+ years of experience, including 5+ years focused on electro-mechanical medical devices. I'm a named inventor on the patented Dolphin™ Electric Ring Cutter — a device that has now helped treat over 45,000 patients across North America.</p>
@@ -99,16 +100,12 @@
     </div>
     <div class="about-stats">
       <div class="stat-card">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Years of experience</div>
+        <div class="stat-num" style="font-size:1rem;margin-bottom:.5rem">Professional</div>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Senior Mechanical Design Engineer with 8+ years of experience. Named inventor on the patented Dolphin™ Electric Ring Cutter. Expertise in medical device design, SolidWorks, CNC machining, injection moulding, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
       </div>
       <div class="stat-card">
-        <div class="stat-num">45,000+</div>
-        <div class="stat-label">Patients treated with Dolphin™ Ring Cutter</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">5+</div>
-        <div class="stat-label">Years in medical device design</div>
+        <div class="stat-num" style="font-size:1rem;margin-bottom:.5rem">Personal</div>
+        <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">When I'm not engineering at work, I'm engineering for fun. Past projects include converting a paddle boat into a Burning Man quadricycle, building out a camper van, and writing computer vision scripts on a Raspberry Pi. I love building things that shouldn't exist — but do.</p>
       </div>
     </div>
   </div>
@@ -123,7 +120,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Agri-tech</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Automated Cricket Harvester</h3>
         <p>Designed and prototyped an automated cricket harvester as a Capstone project at Dalhousie University — selected as the top mechanical engineering project of 2018. The final design reduced harvesting time by 60% (~20 min per rearing bin). A patent was filed and the device is now used daily at Ovipost.</p>
       </div>
@@ -131,7 +128,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Freelance</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Upwork Freelancing Projects</h3>
         <p>Assisted clients with design conceptualisation, prototype building, engineering drawings, and feasibility evaluation. Recent projects include the design of a GPS-enabled tracking device. View profile at <a href="https://www.upwork.com/fl/scottcampbell37" target="_blank">upwork.com/fl/scottcampbell37</a>.</p>
       </div>
@@ -139,7 +136,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Computer vision</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Computer Vision Cricket Sizer</h3>
         <p>Using Python OpenCV and a Raspberry Pi, wrote a script to accurately size live crickets in real time. Automated a previously time-consuming manual task, calculates population statistics automatically, and is now used in daily farm operations.</p>
       </div>
@@ -147,7 +144,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Industrial</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Streetlight Electronics Enclosure</h3>
         <p>As a Co-op student at LED Roadway Lighting in Halifax, designed an IP67-rated electronics housing for streetlight sensor units and redesigned electrical connectors to improve ease of assembly. Gained experience in injection moulding, ingress protection, and ultrasonic welding.</p>
       </div>
@@ -155,7 +152,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Automotive</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Supermileage Design Team</h3>
         <p>Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.</p>
       </div>
@@ -163,7 +160,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Personal project</span>
+        <span class="project-tag tag-personal">Personal</span>
         <h3>E-350 Mobile Camper Conversion</h3>
         <p>In 2018, converted a Ford E-350 transport van into a mobile camper. Work included optimising interior layout for maximum space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.</p>
       </div>
@@ -171,7 +168,7 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Personal project</span>
+        <span class="project-tag tag-personal">Personal</span>
         <h3>Quadricycle</h3>
         <p>Designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it didn't go very fast and had terrible steering — it did float. A must in the desert!</p>
       </div>
@@ -179,16 +176,26 @@
     <div class="project-card">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
-        <span class="project-tag">Education</span>
+        <span class="project-tag tag-professional">Professional</span>
         <h3>Milescraft 360 Orbiter Teaching Aid</h3>
         <p>Designed as part of a fourth-year CAD/CAM course at Dalhousie University to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. Responsible for design and CNC programming using Fusion 360 CAM software.</p>
       </div>
     </div>
-    <div class="project-card">
-      <div class="project-img">Image coming soon</div>
+    <div class="project-card" style="grid-column: 1 / -1;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;padding:.75rem;background:#f3f4f6;">
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+        <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
+      </div>
       <div class="project-body">
-        <span class="project-tag">Medical devices</span>
-        <h3>Ring Rescue Dolphin Ring Cutter</h3>
+        <span class="project-tag tag-personal">Personal</span>
+        <h3>Pop Up Truck Camper</h3>
+        <p>Designed and built a bed rail mounted truck camper with a custom pop-up roof from scratch. The entire project — from initial design through to fabrication — was completed by hand, including all TIG welding of the frame and structure. The pop-up top maximises headroom when camped while keeping the profile low for driving.</p>
+      </div>
+    </div>
         <p>Designed a dolphin-shaped ring cutter tool for safe removal of rings from injured or swollen fingers, combining ergonomic form with reliable cutting function.</p>
       </div>
     </div>
