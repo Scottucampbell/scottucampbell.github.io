@@ -343,19 +343,22 @@ const subProjects = {
 
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  let el;
-  if(id === 'main') el = document.getElementById('main-page');
-  else if(id === 'detail') el = document.getElementById('detail-page');
-  else if(id === 'dolphin') el = document.getElementById('dolphin-page');
-  else if(id === 'dolphin-overview') el = document.getElementById('dolphin-overview');
-  else el = document.getElementById(id + '-page');
-  if(el) el.classList.add('active');
+  const map = {
+    'main': 'main-page',
+    'detail': 'detail-page',
+    'dolphin': 'dolphin-page',
+    'dolphin-overview': 'dolphin-overview'
+  };
+  const elId = map[id] || id;
+  const el = document.getElementById(elId);
+  if(el) { el.classList.add('active'); } else { console.log('page not found:', id, elId); }
   window.scrollTo(0,0);
 }
 
 function showProject(id) {
   if(id === 'dolphin') { showPage('dolphin-overview'); return; }
   const p = projects[id];
+  if(!p) return;
   document.getElementById('detail-tag').textContent = p.tag;
   document.getElementById('detail-tag').className = 'detail-tag ' + p.tagClass;
   document.getElementById('detail-title').textContent = p.title;
@@ -366,13 +369,16 @@ function showProject(id) {
   grid.innerHTML = Array(p.photos).fill(0).map(() =>
     `<div class="detail-photo"><span style="font-size:0.8rem;color:#9ca3af">Image coming soon</span></div>`
   ).join('');
-  document.getElementById('detail-back').onclick = () => { showPage('main'); setTimeout(()=>document.getElementById('projects').scrollIntoView({behavior:'smooth'}),50); };
+  document.getElementById('detail-back').onclick = () => {
+    showPage('main');
+    setTimeout(() => document.getElementById('projects').scrollIntoView({behavior:'smooth'}), 50);
+  };
   showPage('detail');
-  window.scrollTo(0,0);
 }
 
 function showSubProject(id) {
   const p = subProjects[id];
+  if(!p) return;
   document.getElementById('sub-tag').textContent = p.tag;
   document.getElementById('sub-tag').className = 'detail-tag tag-professional';
   document.getElementById('sub-title').textContent = p.title;
@@ -381,7 +387,6 @@ function showSubProject(id) {
   grid.className = 'detail-photos cols-1';
   grid.innerHTML = `<div class="detail-photo"><span style="font-size:0.8rem;color:#9ca3af">Image coming soon</span></div>`;
   showPage('dolphin');
-  window.scrollTo(0,0);
 }
 </script>
 
