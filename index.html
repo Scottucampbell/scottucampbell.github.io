@@ -3,421 +3,399 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Scott Campbell P.Eng — Mechanical Design Engineer</title>
+<title>Scott Campbell P.Eng</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{--navy:#1a2332;--accent:#2563eb;--light:#f8f9fa;--muted:#6b7280;--border:#e5e7eb}
-  body{font-family:'Segoe UI',system-ui,sans-serif;color:#1f2937;background:#fff;line-height:1.6}
-  a{color:var(--accent);text-decoration:none}
-  nav{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:60px;z-index:100}
-  .nav-logo{font-weight:600;font-size:1rem;color:var(--navy);cursor:pointer}
-  .nav-links{display:flex;gap:2rem;list-style:none}
-  .nav-links a{font-size:0.9rem;color:var(--muted);transition:color .2s;cursor:pointer}
-  .nav-links a:hover{color:var(--navy)}
-  section{padding:5rem 2rem;max-width:900px;margin:0 auto}
-  .hero{padding:6rem 2rem 5rem;max-width:900px;margin:0 auto}
-  .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem}
-  .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin-bottom:2rem}
-  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn-primary{background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:opacity .2s;cursor:pointer;border:none}
-  .btn-primary:hover{opacity:.85}
-  .btn-outline{border:1px solid var(--border);color:var(--navy);padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:background .2s;cursor:pointer;background:transparent}
-  .btn-outline:hover{background:var(--light)}
-  .divider{border:none;border-top:1px solid var(--border);margin:0}
-  h2{font-size:1.6rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
-  .section-sub{color:var(--muted);font-size:0.95rem;margin-bottom:2.5rem}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-  .about-text p{color:#374151;margin-bottom:1rem;font-size:0.97rem}
-  .about-stats{display:grid;gap:1rem}
-  .stat-card{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-  .project-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s,transform .2s;cursor:pointer}
-  .project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
-  .project-img{height:160px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#9ca3af;font-size:0.8rem;letter-spacing:.04em}
-  .project-body{padding:1.25rem}
-  .project-tag{display:inline-block;font-size:0.72rem;font-weight:500;padding:2px 10px;border-radius:12px;margin-bottom:.6rem}
-  .tag-professional{background:#eff6ff;color:#2563eb}
-  .tag-personal{background:#f0fdf4;color:#16a34a}
-  .project-body h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
-  .read-more{font-size:0.8rem;color:var(--accent);margin-top:.75rem;display:inline-block;font-weight:500}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-  .contact-text p{color:#374151;font-size:0.95rem;margin-bottom:1.5rem}
-  .contact-links{display:flex;flex-direction:column;gap:.75rem}
-  .contact-link{display:flex;align-items:center;gap:.75rem;font-size:0.9rem;color:#374151}
-  .contact-icon{width:36px;height:36px;border-radius:8px;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-  .contact-form{display:flex;flex-direction:column;gap:.75rem}
-  .contact-form input,.contact-form textarea{padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;font-family:inherit;outline:none;transition:border-color .2s;background:#fff;color:#1f2937}
-  .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
-  .contact-form textarea{resize:vertical;min-height:110px}
-  .contact-form button{background:var(--navy);color:#fff;padding:11px;border:none;border-radius:6px;font-size:0.9rem;font-weight:500;cursor:pointer;transition:opacity .2s}
-  .contact-form button:hover{opacity:.85}
-  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:0.85rem;color:var(--muted)}
-
-  /* Pages */
-  .page{display:none;max-width:900px;margin:0 auto;padding:3rem 2rem}
-  .page.active{display:block}
-  #main-page{display:block}
-  .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:0.9rem;color:var(--muted);cursor:pointer;margin-bottom:2rem;transition:color .2s;background:none;border:none;padding:0}
-  .back-btn:hover{color:var(--navy)}
-  .detail-tag{display:inline-block;font-size:0.75rem;font-weight:500;padding:3px 12px;border-radius:12px;margin-bottom:1rem}
-  .detail-title{font-size:2rem;font-weight:600;color:var(--navy);margin-bottom:1rem}
-  .detail-desc{font-size:1rem;color:#374151;line-height:1.7;margin-bottom:2rem;max-width:700px}
-  .detail-photos{display:grid;gap:1rem;margin-bottom:2rem}
-  .detail-photos.cols-1{grid-template-columns:1fr}
-  .detail-photos.cols-2{grid-template-columns:1fr 1fr}
-  .detail-photos.cols-3{grid-template-columns:1fr 1fr 1fr}
-  .detail-photo{background:#f3f4f6;border-radius:8px;height:260px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.8rem;overflow:hidden}
-  .detail-photo img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-  .sub-projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1.5rem}
-  .sub-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s}
-  .sub-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
-  .sub-card-img{height:140px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.8rem}
-  .sub-card-body{padding:1rem}
-  .sub-card-body h3{font-size:0.95rem;font-weight:600;color:var(--navy);margin-bottom:.3rem}
-
-  @media(max-width:640px){
-    .about-grid,.contact-grid{grid-template-columns:1fr}
-    nav{padding:0 1rem}
-    section,.hero,.page{padding:3rem 1.2rem}
-    .detail-photos.cols-2,.detail-photos.cols-3{grid-template-columns:1fr}
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1a2332;--accent:#2563eb;--light:#f8f9fa;--muted:#6b7280;--border:#e5e7eb}
+body{font-family:'Segoe UI',system-ui,sans-serif;color:#1f2937;background:#fff;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+nav{position:sticky;top:0;background:rgba(255,255,255,0.97);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:60px;z-index:100}
+.nav-logo{font-weight:600;font-size:1rem;color:var(--navy);cursor:pointer;border:none;background:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links button{font-size:0.9rem;color:var(--muted);background:none;border:none;cursor:pointer;font-family:inherit}
+.nav-links button:hover{color:var(--navy)}
+.page{display:none}
+.page.active{display:block}
+.wrap{max-width:900px;margin:0 auto;padding:4rem 2rem}
+.hero{padding:6rem 2rem 5rem;max-width:900px;margin:0 auto}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;cursor:pointer;font-family:inherit}
+.btn-dark{background:var(--navy);color:#fff;border:none}
+.btn-dark:hover{opacity:.85}
+.btn-light{background:transparent;color:var(--navy);border:1px solid var(--border)}
+.btn-light:hover{background:var(--light)}
+hr{border:none;border-top:1px solid var(--border)}
+h2{font-size:1.6rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.sub{color:var(--muted);font-size:0.95rem;margin-bottom:2.5rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about-text p{color:#374151;margin-bottom:1rem;font-size:0.97rem}
+.info-card{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:1rem}
+.info-card-title{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.info-card p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.card{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
+.card-img{height:160px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.8rem}
+.card-body{padding:1.25rem}
+.tag{display:inline-block;font-size:0.72rem;font-weight:500;padding:2px 10px;border-radius:12px;margin-bottom:.6rem}
+.tag-pro{background:#eff6ff;color:#2563eb}
+.tag-per{background:#f0fdf4;color:#16a34a}
+.card-body h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
+.more{font-size:0.8rem;color:var(--accent);font-weight:500}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:0.9rem;color:var(--muted);background:none;border:none;cursor:pointer;margin-bottom:2rem;font-family:inherit;padding:0}
+.back-btn:hover{color:var(--navy)}
+.detail-tag{display:inline-block;font-size:0.75rem;font-weight:500;padding:3px 12px;border-radius:12px;margin-bottom:1rem}
+.detail-title{font-size:2rem;font-weight:600;color:var(--navy);margin-bottom:1rem}
+.detail-desc{font-size:1rem;color:#374151;line-height:1.7;margin-bottom:2rem;max-width:700px}
+.photo-grid{display:grid;gap:1rem;margin-bottom:2rem}
+.p1{grid-template-columns:1fr}
+.p2{grid-template-columns:1fr 1fr}
+.p3,.p6{grid-template-columns:1fr 1fr 1fr}
+.p4{grid-template-columns:1fr 1fr}
+.photo-box{background:#f3f4f6;border-radius:8px;height:220px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.8rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-links{display:flex;flex-direction:column;gap:.75rem;margin-top:1rem}
+.c-link{display:flex;align-items:center;gap:.75rem;font-size:0.9rem;color:#374151}
+.c-icon{width:36px;height:36px;border-radius:8px;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cf input,.cf textarea{display:block;width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;font-family:inherit;outline:none;margin-bottom:.75rem;background:#fff;color:#1f2937}
+.cf textarea{min-height:110px;resize:vertical}
+.cf button{width:100%;background:var(--navy);color:#fff;padding:11px;border:none;border-radius:6px;font-size:0.9rem;cursor:pointer}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:0.85rem;color:var(--muted)}
+@media(max-width:640px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .p2,.p3,.p4,.p6{grid-template-columns:1fr 1fr}
+  nav{padding:0 1rem}
+  .wrap,.hero{padding:3rem 1.2rem}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <span class="nav-logo" onclick="showPage('main')">Scott Campbell P.Eng</span>
+  <button class="nav-logo" onclick="goTo('home')">Scott Campbell P.Eng</button>
   <ul class="nav-links">
-    <li><a href="#about" onclick="showPage('main')">About</a></li>
-    <li><a href="#projects" onclick="showPage('main')">Projects</a></li>
-    <li><a href="#skills" onclick="showPage('main')">Resume</a></li>
-    <li><a href="#contact" onclick="showPage('main')">Contact</a></li>
+    <li><button onclick="goTo('home','about')">About</button></li>
+    <li><button onclick="goTo('home','projects')">Projects</button></li>
+    <li><button onclick="goTo('home','resume')">Resume</button></li>
+    <li><button onclick="goTo('home','contact')">Contact</button></li>
   </ul>
 </nav>
 
-<!-- MAIN PAGE -->
-<div id="main-page" class="page active">
+<!-- HOME -->
+<div id="pg-home" class="page active">
+  <div class="hero">
+    <h1>Designing precision<br/>engineering solutions</h1>
+    <p>Senior Mechanical Design Engineer with 8+ years of experience building products that are intuitive, manufacturable, and built to last.</p>
+    <div class="hero-btns">
+      <button class="btn btn-dark" onclick="goTo('home','projects')">View my work</button>
+      <button class="btn btn-light" onclick="goTo('home','contact')">Get in touch</button>
+    </div>
+  </div>
 
-<div class="hero">
-  <h1>Designing precision<br/>engineering solutions</h1>
-  <p>Senior Mechanical Design Engineer with 8+ years of experience building products that are intuitive, manufacturable, and built to last.</p>
-  <div class="hero-btns">
-    <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View my work</button>
-    <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+  <hr/>
+
+  <div class="wrap" id="about">
+    <h2>About me</h2>
+    <p class="sub">Engineer, problem-solver, and lifelong tinkerer.</p>
+    <div style="display:flex;justify-content:center;margin-bottom:2rem">
+      <div style="width:160px;height:160px;border-radius:50%;background:#e5e7eb;border:3px solid var(--border);display:flex;align-items:center;justify-content:center">
+        <span style="font-size:0.8rem;color:#9ca3af;text-align:center;line-height:1.4">Photo<br/>coming soon</span>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Senior Mechanical Design Engineer with 8+ years of experience, including 5+ years focused on electro-mechanical medical devices. I'm a named inventor on the patented Dolphin™ Electric Ring Cutter — a device that has now helped treat over 45,000 patients across North America.</p>
+        <p>I've worked across the full product development lifecycle: from early user research and concept design all the way through to production, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
+        <p>I genuinely love the challenge of making things intuitive. I keep coming back to something Dieter Rams said — "Good design is as little design as possible." That's the lens I bring to every design problem.</p>
+      </div>
+      <div>
+        <div class="info-card">
+          <div class="info-card-title">Professional</div>
+          <p>Senior Mechanical Design Engineer with 8+ years of experience. Named inventor on the patented Dolphin™ Electric Ring Cutter. Expertise in medical device design, SolidWorks, CNC machining, injection moulding, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Personal</div>
+          <p>When I'm not engineering at work, I'm engineering for fun. Past projects include converting a paddle boat into a Burning Man quadricycle, building out a camper van, and writing computer vision scripts on a Raspberry Pi. I love building things that shouldn't exist — but do.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="wrap" id="projects">
+    <h2>Projects</h2>
+    <p class="sub">Click any project to learn more.</p>
+    <div class="grid">
+
+      <div class="card" onclick="goTo('dolphin')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Dolphin Electric Ring Cutter</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','harvester')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Automated Cricket Harvester</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','upwork')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Upwork Freelancing Projects</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','cvsizer')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Computer Vision Cricket Sizer</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','streetlight')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Streetlight Electronics Enclosure</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','supermileage')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Supermileage Design Team</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','van')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-per">Personal</span>
+          <h3>E-350 Mobile Camper Conversion</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','quadricycle')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-per">Personal</span>
+          <h3>Quadricycle</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','teaching')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Milescraft 360 Orbiter Teaching Aid</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goTo('project','truckcamper')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-per">Personal</span>
+          <h3>Pop Up Truck Camper</h3>
+          <div class="more">View project →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="wrap" id="resume">
+    <h2>Resume</h2>
+    <p class="sub">Download or view my full resume below.</p>
+    <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" target="_blank" class="btn btn-dark" style="display:inline-block;margin-bottom:1.5rem">Download resume (PDF)</a>
+    <div id="pdf-container" style="border:1px solid var(--border);border-radius:8px;overflow:hidden"></div>
+    <p id="pdf-loading" style="color:var(--muted);font-size:0.9rem;margin-top:.5rem">Loading resume...</p>
+  </div>
+
+  <hr/>
+
+  <div class="wrap" id="contact">
+    <h2>Contact</h2>
+    <p class="sub">Open to new opportunities, collaborations, and conversations.</p>
+    <div class="contact-grid">
+      <div>
+        <p style="color:#374151;font-size:0.95rem">Whether you have a project in mind or just want to connect, feel free to reach out. I typically respond within one business day.</p>
+        <div class="contact-links">
+          <div class="c-link"><div class="c-icon">✉️</div><span>scott@email.com</span></div>
+          <div class="c-link"><div class="c-icon">💼</div><span>linkedin.com/in/scottcampbell</span></div>
+          <div class="c-link"><div class="c-icon">📄</div><span>Download CV</span></div>
+          <div class="c-link"><div class="c-icon">📍</div><span>Location</span></div>
+        </div>
+      </div>
+      <div class="cf">
+        <input type="text" placeholder="Your name"/>
+        <input type="email" placeholder="Your email"/>
+        <textarea placeholder="Your message"></textarea>
+        <button type="button">Send message</button>
+      </div>
+    </div>
+  </div>
+
+  <footer><p>© 2026 Scott Campbell P.Eng · Mechanical Design Engineer</p></footer>
+</div>
+
+<!-- PROJECT DETAIL -->
+<div id="pg-project" class="page">
+  <div class="wrap">
+    <button class="back-btn" onclick="goTo('home','projects')">← Back to projects</button>
+    <span class="detail-tag" id="p-tag"></span>
+    <h1 class="detail-title" id="p-title"></h1>
+    <p class="detail-desc" id="p-desc"></p>
+    <div class="photo-grid" id="p-photos"></div>
   </div>
 </div>
 
-<hr class="divider"/>
-
-<section id="about">
-  <h2>About me</h2>
-  <p class="section-sub">Engineer, problem-solver, and lifelong tinkerer.</p>
-  <div style="display:flex;justify-content:center;margin-bottom:2rem;">
-    <div style="width:160px;height:160px;border-radius:50%;background:#e5e7eb;border:3px solid var(--border);display:flex;align-items:center;justify-content:center;">
-      <span style="font-size:0.8rem;color:#9ca3af;text-align:center;line-height:1.4;">Photo<br/>coming soon</span>
+<!-- DOLPHIN OVERVIEW -->
+<div id="pg-dolphin" class="page">
+  <div class="wrap">
+    <button class="back-btn" onclick="goTo('home','projects')">← Back to projects</button>
+    <span class="detail-tag tag-pro">Professional</span>
+    <h1 class="detail-title">Dolphin Electric Ring Cutter</h1>
+    <p class="detail-desc">The Dolphin™ Electric Ring Cutter is a patented medical device designed for the safe and efficient removal of rings from injured or swollen fingers. As a named inventor and key contributor, I worked across the full product development lifecycle — from early concept and user research through to regulatory certification and commercial launch. The device has treated over 45,000 patients across North America. Click a sub-project below to learn more.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <div class="card" onclick="goTo('subproject','certification')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Certification</h3>
+          <div class="more">View →</div>
+        </div>
+      </div>
+      <div class="card" onclick="goTo('subproject','productdev')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Product Development</h3>
+          <div class="more">View →</div>
+        </div>
+      </div>
+      <div class="card" onclick="goTo('subproject','commercialization')">
+        <div class="card-img">Image coming soon</div>
+        <div class="card-body">
+          <span class="tag tag-pro">Professional</span>
+          <h3>Commercialization</h3>
+          <div class="more">View →</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I'm a Senior Mechanical Design Engineer with 8+ years of experience, including 5+ years focused on electro-mechanical medical devices. I'm a named inventor on the patented Dolphin™ Electric Ring Cutter — a device that has now helped treat over 45,000 patients across North America.</p>
-      <p>I've worked across the full product development lifecycle: from early user research and concept design all the way through to production, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
-      <p>I genuinely love the challenge of making things intuitive. I keep coming back to something Dieter Rams said — "Good design is as little design as possible." That's the lens I bring to every design problem.</p>
-    </div>
-    <div class="about-stats">
-      <div class="stat-card">
-        <div style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem">Professional</div>
-        <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Senior Mechanical Design Engineer with 8+ years of experience. Named inventor on the patented Dolphin™ Electric Ring Cutter. Expertise in medical device design, SolidWorks, CNC machining, injection moulding, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
-      </div>
-      <div class="stat-card">
-        <div style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem">Personal</div>
-        <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">When I'm not engineering at work, I'm engineering for fun. Past projects include converting a paddle boat into a Burning Man quadricycle, building out a camper van, and writing computer vision scripts on a Raspberry Pi. I love building things that shouldn't exist — but do.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <p class="section-sub">Click any project to learn more.</p>
-  <div class="projects-grid">
-
-    <div class="project-card" onclick="showProject('dolphin')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Dolphin Electric Ring Cutter</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('harvester')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Automated Cricket Harvester</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('upwork')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Upwork Freelancing Projects</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('cvsizer')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Computer Vision Cricket Sizer</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('streetlight')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Streetlight Electronics Enclosure</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('supermileage')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Supermileage Design Team</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('van')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-personal">Personal</span>
-        <h3>E-350 Mobile Camper Conversion</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('quadricycle')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-personal">Personal</span>
-        <h3>Quadricycle</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('teaching')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-professional">Professional</span>
-        <h3>Milescraft 360 Orbiter Teaching Aid</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-    <div class="project-card" onclick="showProject('truckcamper')">
-      <div class="project-img">Image coming soon</div>
-      <div class="project-body">
-        <span class="project-tag tag-personal">Personal</span>
-        <h3>Pop Up Truck Camper</h3>
-        <span class="read-more">View project →</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<section id="skills">
-  <h2>Resume</h2>
-  <p class="section-sub">Download or view my full resume below.</p>
-  <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" target="_blank" style="display:inline-block;margin-bottom:1.5rem;background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;">Download resume (PDF)</a>
-  <div id="pdf-container" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;"></div>
-  <p id="pdf-loading" style="color:var(--muted);font-size:0.9rem;margin-top:.5rem;">Loading resume...</p>
-</section>
-
-<hr class="divider"/>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p class="section-sub">Open to new opportunities, collaborations, and conversations.</p>
-  <div class="contact-grid">
-    <div>
-      <div class="contact-text"><p>Whether you have a project in mind or just want to connect, feel free to reach out. I typically respond within one business day.</p></div>
-      <div class="contact-links">
-        <div class="contact-link"><div class="contact-icon">✉️</div><span>scott@email.com</span></div>
-        <div class="contact-link"><div class="contact-icon">💼</div><span>linkedin.com/in/scottcampbell</span></div>
-        <div class="contact-link"><div class="contact-icon">📄</div><span>Download CV</span></div>
-        <div class="contact-link"><div class="contact-icon">📍</div><span>Location</span></div>
-      </div>
-    </div>
-    <div class="contact-form">
-      <input type="text" placeholder="Your name"/>
-      <input type="email" placeholder="Your email"/>
-      <textarea placeholder="Your message"></textarea>
-      <button type="button">Send message</button>
-    </div>
-  </div>
-</section>
-
-<footer><p>© 2026 Scott Campbell P.Eng · Mechanical Design Engineer</p></footer>
 </div>
 
-<!-- PROJECT DETAIL PAGE -->
-<div id="detail-page" class="page">
-  <button class="back-btn" id="detail-back">← Back</button>
-  <span class="detail-tag" id="detail-tag"></span>
-  <h1 class="detail-title" id="detail-title"></h1>
-  <p class="detail-desc" id="detail-desc"></p>
-  <div class="detail-photos" id="detail-photos"></div>
-</div>
-
-<!-- DOLPHIN SUB-PROJECT PAGE -->
-<div id="dolphin-page" class="page">
-  <button class="back-btn" onclick="showProject('dolphin')">← Back to Dolphin Electric Ring Cutter</button>
-  <span class="detail-tag" id="sub-tag"></span>
-  <h1 class="detail-title" id="sub-title"></h1>
-  <p class="detail-desc" id="sub-desc"></p>
-  <div class="detail-photos" id="sub-photos"></div>
-</div>
-
-<!-- DOLPHIN OVERVIEW PAGE -->
-<div id="dolphin-overview" class="page">
-  <button class="back-btn" onclick="showPage('main');setTimeout(()=>document.getElementById('projects').scrollIntoView({behavior:'smooth'}),50)">← Back to projects</button>
-  <span class="detail-tag tag-professional">Professional</span>
-  <h1 class="detail-title">Dolphin Electric Ring Cutter</h1>
-  <p class="detail-desc">The Dolphin™ Electric Ring Cutter is a patented medical device designed for the safe and efficient removal of rings from injured or swollen fingers. As a named inventor and key contributor, I worked across the full product development lifecycle — from early concept and user research through to regulatory certification and commercial launch. The device has treated over 45,000 patients across North America. Click a sub-project below to learn more.</p>
-  <div class="sub-projects-grid">
-    <div class="sub-card" onclick="showSubProject('certification')">
-      <div class="sub-card-img">Image coming soon</div>
-      <div class="sub-card-body">
-        <h3>Certification</h3>
-        <span class="read-more">View →</span>
-      </div>
-    </div>
-    <div class="sub-card" onclick="showSubProject('productdev')">
-      <div class="sub-card-img">Image coming soon</div>
-      <div class="sub-card-body">
-        <h3>Product Development</h3>
-        <span class="read-more">View →</span>
-      </div>
-    </div>
-    <div class="sub-card" onclick="showSubProject('commercialization')">
-      <div class="sub-card-img">Image coming soon</div>
-      <div class="sub-card-body">
-        <h3>Commercialization</h3>
-        <span class="read-more">View →</span>
-      </div>
+<!-- DOLPHIN SUB-PROJECT -->
+<div id="pg-subproject" class="page">
+  <div class="wrap">
+    <button class="back-btn" onclick="goTo('dolphin')">← Back to Dolphin Electric Ring Cutter</button>
+    <span class="detail-tag tag-pro" id="s-tag"></span>
+    <h1 class="detail-title" id="s-title"></h1>
+    <p class="detail-desc" id="s-desc"></p>
+    <div class="photo-grid p1">
+      <div class="photo-box">Image coming soon</div>
     </div>
   </div>
 </div>
 
 <script>
 const projects = {
-  harvester:{tag:'Professional',tagClass:'tag-professional',title:'Automated Cricket Harvester',desc:'Designed and prototyped an automated cricket harvester as a Capstone project at Dalhousie University — selected as the top mechanical engineering project of 2018. The final design reduced harvesting time by 60% (~20 min per rearing bin). A patent was filed and the device is now used daily at Ovipost.',photos:2},
-  upwork:{tag:'Professional',tagClass:'tag-professional',title:'Upwork Freelancing Projects',desc:'As a freelancer on Upwork, I have assisted clients with design conceptualisation, building prototypes, and preparing engineering drawings. I have also worked with clients to evaluate the feasibility of their proposed projects. One recent project included the design of a GPS-enabled tracking device.',photos:2},
-  cvsizer:{tag:'Professional',tagClass:'tag-professional',title:'Computer Vision Cricket Sizer',desc:'Utilising the Python OpenCV library and a Raspberry Pi, I wrote a script that accurately sizes live crickets in real time. This tool automated a task which was traditionally extremely time-consuming, and is now used in daily farm operations.',photos:1},
-  streetlight:{tag:'Professional',tagClass:'tag-professional',title:'Streetlight Electronics Enclosure',desc:'As a Co-op student at LED Roadway Lighting in Halifax, I designed an IP67-rated electronics housing for streetlight sensor units and redesigned electrical connectors to improve ease of assembly. Gained experience in injection moulding, ingress protection, and ultrasonic welding.',photos:2},
-  supermileage:{tag:'Professional',tagClass:'tag-professional',title:'Supermileage Design Team',desc:'Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.',photos:2},
-  van:{tag:'Personal',tagClass:'tag-personal',title:'E-350 Mobile Camper Conversion',desc:'In 2018, I converted a Ford E-350 transport van into a mobile camper. Work included optimising interior layout for maximum space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.',photos:4},
-  quadricycle:{tag:'Personal',tagClass:'tag-personal',title:'Quadricycle',desc:'I designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it did not go very fast and had terrible steering, it did float. A must in the desert!',photos:3},
-  teaching:{tag:'Professional',tagClass:'tag-professional',title:'Milescraft 360 Orbiter Teaching Aid',desc:'Designed as part of a fourth-year CAD/CAM course at Dalhousie University to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. Responsible for design and CNC programming using Fusion 360 CAM software.',photos:2},
-  truckcamper:{tag:'Personal',tagClass:'tag-personal',title:'Pop Up Truck Camper',desc:'Designed and built a bed rail mounted truck camper with a custom pop-up roof entirely from scratch. The entire project — from initial concept through to full fabrication — was completed by hand, including all TIG welding of the frame and structure. The pop-up top maximises headroom when camped while keeping the profile low for driving.',photos:6}
+  harvester:{tag:'Professional',tc:'tag-pro',title:'Automated Cricket Harvester',desc:'Designed and prototyped an automated cricket harvester as a Capstone project at Dalhousie University — selected as the top mechanical engineering project of 2018. The final design reduced harvesting time by 60% (~20 min per rearing bin). A patent was filed and the device is now used daily at Ovipost.',photos:2},
+  upwork:{tag:'Professional',tc:'tag-pro',title:'Upwork Freelancing Projects',desc:'As a freelancer on Upwork, I have assisted clients with design conceptualisation, building prototypes, and preparing engineering drawings. I have also worked with clients to evaluate the feasibility of their proposed projects. One recent project included the design of a GPS-enabled tracking device.',photos:2},
+  cvsizer:{tag:'Professional',tc:'tag-pro',title:'Computer Vision Cricket Sizer',desc:'Utilising the Python OpenCV library and a Raspberry Pi, I wrote a script that accurately sizes live crickets in real time. This tool automated a task which was traditionally extremely time-consuming, and is now used in daily farm operations.',photos:1},
+  streetlight:{tag:'Professional',tc:'tag-pro',title:'Streetlight Electronics Enclosure',desc:'As a Co-op student at LED Roadway Lighting in Halifax, I designed an IP67-rated electronics housing for streetlight sensor units and redesigned electrical connectors to improve ease of assembly. Gained experience in injection moulding, ingress protection, and ultrasonic welding.',photos:2},
+  supermileage:{tag:'Professional',tc:'tag-pro',title:'Supermileage Design Team',desc:'Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.',photos:2},
+  van:{tag:'Personal',tc:'tag-per',title:'E-350 Mobile Camper Conversion',desc:'In 2018, I converted a Ford E-350 transport van into a mobile camper. Work included optimising interior layout for maximum space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.',photos:4},
+  quadricycle:{tag:'Personal',tc:'tag-per',title:'Quadricycle',desc:'I designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it did not go very fast and had terrible steering, it did float. A must in the desert!',photos:3},
+  teaching:{tag:'Professional',tc:'tag-pro',title:'Milescraft 360 Orbiter Teaching Aid',desc:'Designed as part of a fourth-year CAD/CAM course at Dalhousie University to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. Responsible for design and CNC programming using Fusion 360 CAM software.',photos:2},
+  truckcamper:{tag:'Personal',tc:'tag-per',title:'Pop Up Truck Camper',desc:'Designed and built a bed rail mounted truck camper with a custom pop-up roof entirely from scratch. The entire project — from initial concept through to full fabrication — was completed by hand, including all TIG welding of the frame and structure.',photos:6}
 };
 
-const subProjects = {
-  certification:{tag:'Certification',title:'Certification',desc:'Description coming soon — add details about the certification process for the Dolphin™ Electric Ring Cutter, including IEC 60601, ISO 14971 risk management, and regulatory submissions.'},
-  productdev:{tag:'Product Development',title:'Product Development',desc:'Description coming soon — add details about the product development process, including user research, concept design, prototyping, V&V testing, and design controls.'},
-  commercialization:{tag:'Commercialization',title:'Commercialization',desc:'Description coming soon — add details about the commercialization journey, including manufacturing scale-up, market launch, and the 45,000+ patients treated across North America.'}
+const subs = {
+  certification:{title:'Certification',desc:'Description coming soon — add details about the certification process for the Dolphin™ Electric Ring Cutter, including IEC 60601, ISO 14971 risk management, and regulatory submissions.'},
+  productdev:{title:'Product Development',desc:'Description coming soon — add details about the product development process, including user research, concept design, prototyping, V&V testing, and design controls.'},
+  commercialization:{title:'Commercialization',desc:'Description coming soon — add details about the commercialization journey, including manufacturing scale-up, market launch, and the 45,000+ patients treated across North America.'}
 };
 
-function showPage(id) {
+function goTo(page, id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const map = {
-    'main': 'main-page',
-    'detail': 'detail-page',
-    'dolphin': 'dolphin-page',
-    'dolphin-overview': 'dolphin-overview'
-  };
-  const elId = map[id] || id;
-  const el = document.getElementById(elId);
-  if(el) { el.classList.add('active'); } else { console.log('page not found:', id, elId); }
-  window.scrollTo(0,0);
+  if(page === 'home') {
+    document.getElementById('pg-home').classList.add('active');
+    if(id) setTimeout(() => { const el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }, 50);
+    else window.scrollTo(0,0);
+  } else if(page === 'project' && id) {
+    const p = projects[id];
+    document.getElementById('p-tag').textContent = p.tag;
+    document.getElementById('p-tag').className = 'detail-tag ' + p.tc;
+    document.getElementById('p-title').textContent = p.title;
+    document.getElementById('p-desc').textContent = p.desc;
+    const cols = {1:'p1',2:'p2',3:'p3',4:'p4',6:'p6'}[p.photos] || 'p2';
+    const g = document.getElementById('p-photos');
+    g.className = 'photo-grid ' + cols;
+    g.innerHTML = Array(p.photos).fill('<div class="photo-box">Image coming soon</div>').join('');
+    document.getElementById('pg-project').classList.add('active');
+    window.scrollTo(0,0);
+  } else if(page === 'dolphin') {
+    document.getElementById('pg-dolphin').classList.add('active');
+    window.scrollTo(0,0);
+  } else if(page === 'subproject' && id) {
+    const s = subs[id];
+    document.getElementById('s-tag').textContent = s.title;
+    document.getElementById('s-title').textContent = s.title;
+    document.getElementById('s-desc').textContent = s.desc;
+    document.getElementById('pg-subproject').classList.add('active');
+    window.scrollTo(0,0);
+  }
 }
 
-function showProject(id) {
-  if(id === 'dolphin') { showPage('dolphin-overview'); return; }
-  const p = projects[id];
-  if(!p) return;
-  document.getElementById('detail-tag').textContent = p.tag;
-  document.getElementById('detail-tag').className = 'detail-tag ' + p.tagClass;
-  document.getElementById('detail-title').textContent = p.title;
-  document.getElementById('detail-desc').textContent = p.desc;
-  const cols = p.photos === 1 ? 'cols-1' : p.photos === 2 ? 'cols-2' : 'cols-3';
-  const grid = document.getElementById('detail-photos');
-  grid.className = 'detail-photos ' + cols;
-  grid.innerHTML = Array(p.photos).fill(0).map(() =>
-    `<div class="detail-photo"><span style="font-size:0.8rem;color:#9ca3af">Image coming soon</span></div>`
-  ).join('');
-  document.getElementById('detail-back').onclick = () => {
-    showPage('main');
-    setTimeout(() => document.getElementById('projects').scrollIntoView({behavior:'smooth'}), 50);
-  };
-  showPage('detail');
-}
-
-function showSubProject(id) {
-  const p = subProjects[id];
-  if(!p) return;
-  document.getElementById('sub-tag').textContent = p.tag;
-  document.getElementById('sub-tag').className = 'detail-tag tag-professional';
-  document.getElementById('sub-title').textContent = p.title;
-  document.getElementById('sub-desc').textContent = p.desc;
-  const grid = document.getElementById('sub-photos');
-  grid.className = 'detail-photos cols-1';
-  grid.innerHTML = `<div class="detail-photo"><span style="font-size:0.8rem;color:#9ca3af">Image coming soon</span></div>`;
-  showPage('dolphin');
-}
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-(function(){
-  const url='https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf';
-  pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  const container=document.getElementById('pdf-container');
-  const loading=document.getElementById('pdf-loading');
-  pdfjsLib.getDocument(url).promise.then(pdf=>{
-    loading.style.display='none';
-    const renderPage=(num)=>{
-      pdf.getPage(num).then(page=>{
-        const vp=page.getViewport({scale:1});
-        const scale=container.clientWidth/vp.width;
-        const scaled=page.getViewport({scale});
-        const canvas=document.createElement('canvas');
-        canvas.width=scaled.width;
-        canvas.height=scaled.height;
-        canvas.style.display='block';
-        canvas.style.width='100%';
-        if(num<pdf.numPages) canvas.style.borderBottom='1px solid var(--border)';
+// PDF render
+window.addEventListener('load', () => {
+  if(typeof pdfjsLib === 'undefined') return;
+  const url = 'https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const container = document.getElementById('pdf-container');
+  const loading = document.getElementById('pdf-loading');
+  pdfjsLib.getDocument(url).promise.then(pdf => {
+    loading.style.display = 'none';
+    for(let i = 1; i <= pdf.numPages; i++) {
+      pdf.getPage(i).then(page => {
+        const vp = page.getViewport({scale:1});
+        const scale = container.clientWidth / vp.width;
+        const scaled = page.getViewport({scale});
+        const canvas = document.createElement('canvas');
+        canvas.width = scaled.width;
+        canvas.height = scaled.height;
+        canvas.style.cssText = 'display:block;width:100%';
+        if(i < pdf.numPages) canvas.style.borderBottom = '1px solid var(--border)';
         container.appendChild(canvas);
-        page.render({canvasContext:canvas.getContext('2d'),viewport:scaled});
-        if(num<pdf.numPages) renderPage(num+1);
+        page.render({canvasContext: canvas.getContext('2d'), viewport: scaled});
       });
-    };
-    renderPage(1);
-  }).catch(()=>{ loading.textContent='Unable to load resume. Please use the download button above.'; });
-})();
+    }
+  }).catch(() => loading.textContent = 'Unable to load resume. Please use the download button above.');
+});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </body>
 </html>
