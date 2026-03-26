@@ -82,10 +82,10 @@
 <nav>
   <span class="nav-logo" onclick="showMain()">Scott Campbell P.Eng</span>
   <ul class="nav-links">
-    <li><a onclick="showMain();scrollTo('about')">About</a></li>
-    <li><a onclick="showMain();scrollTo('projects')">Projects</a></li>
-    <li><a onclick="showMain();scrollTo('skills')">Resume</a></li>
-    <li><a onclick="showMain();scrollTo('contact')">Contact</a></li>
+    <li><a href="#about" onclick="showMain()">About</a></li>
+    <li><a href="#projects" onclick="showMain()">Projects</a></li>
+    <li><a href="#skills" onclick="showMain()">Resume</a></li>
+    <li><a href="#contact" onclick="showMain()">Contact</a></li>
   </ul>
 </nav>
 
@@ -142,7 +142,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Automated Cricket Harvester</h3>
-        <p>Top Capstone project at Dalhousie 2018. Reduced harvesting time by 60%. Patent filed, device in daily use at Ovipost.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -152,7 +151,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Upwork Freelancing Projects</h3>
-        <p>Design conceptualisation, prototyping, engineering drawings, and feasibility evaluation for clients worldwide.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -162,7 +160,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Computer Vision Cricket Sizer</h3>
-        <p>Python OpenCV + Raspberry Pi script to size live crickets in real time. Now used in daily farm operations.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -172,7 +169,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Streetlight Electronics Enclosure</h3>
-        <p>IP67-rated electronics housing for LED streetlight sensor units. Designed during Co-op at LED Roadway Lighting, Halifax.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -182,7 +178,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Supermileage Design Team</h3>
-        <p>Chassis and bodywork design for a student supermileage vehicle, optimised for aerodynamic efficiency and minimal weight.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -192,7 +187,6 @@
       <div class="project-body">
         <span class="project-tag tag-personal">Personal</span>
         <h3>E-350 Mobile Camper Conversion</h3>
-        <p>Full camper conversion of a Ford E-350 — custom cabinetry, solar panels, and a full electrical system.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -202,7 +196,6 @@
       <div class="project-body">
         <span class="project-tag tag-personal">Personal</span>
         <h3>Quadricycle</h3>
-        <p>Converted a paddle boat into a quadricycle for Burning Man 2019. Terrible steering. Did float. 10/10.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -212,7 +205,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Milescraft 360 Orbiter Teaching Aid</h3>
-        <p>CAD/CAM course project at Dalhousie. Design and CNC programming using Fusion 360 to demonstrate the Orbiter drill attachment.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -222,7 +214,6 @@
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Ring Rescue Dolphin Ring Cutter</h3>
-        <p>Named inventor on the patented Dolphin™ Electric Ring Cutter. 45,000+ patients treated across North America.</p>
         <span class="read-more">View project →</span>
       </div>
     </div>
@@ -252,10 +243,41 @@
 <section id="skills">
   <h2>Resume</h2>
   <p class="section-sub">Download or view my full resume below.</p>
-  <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" target="_blank" style="display:inline-block;margin-bottom:1.5rem;background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;">Open resume (PDF)</a>
-  <br/>
-  <iframe src="https://docs.google.com/viewer?url=https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf&embedded=true" width="100%" height="800px" style="border:1px solid var(--border);border-radius:8px;" title="Scott Campbell Resume"></iframe>
+  <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" target="_blank" style="display:inline-block;margin-bottom:1.5rem;background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;">Download resume (PDF)</a>
+  <div id="pdf-container" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;"></div>
+  <p id="pdf-loading" style="color:var(--muted);font-size:0.9rem;margin-top:.5rem;">Loading resume...</p>
 </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+  const url = 'https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const container = document.getElementById('pdf-container');
+  const loading = document.getElementById('pdf-loading');
+  pdfjsLib.getDocument(url).promise.then(pdf => {
+    loading.style.display = 'none';
+    const renderPage = (num) => {
+      pdf.getPage(num).then(page => {
+        const viewport = page.getViewport({scale: 1});
+        const scale = container.clientWidth / viewport.width;
+        const scaled = page.getViewport({scale});
+        const canvas = document.createElement('canvas');
+        canvas.width = scaled.width;
+        canvas.height = scaled.height;
+        canvas.style.display = 'block';
+        canvas.style.width = '100%';
+        if(num < pdf.numPages) canvas.style.borderBottom = '1px solid var(--border)';
+        container.appendChild(canvas);
+        page.render({canvasContext: canvas.getContext('2d'), viewport: scaled});
+        if(num < pdf.numPages) renderPage(num + 1);
+      });
+    };
+    renderPage(1);
+  }).catch(() => {
+    loading.textContent = 'Unable to load resume. Please use the download button above.';
+  });
+})();
+</script>
 
 <hr class="divider"/>
 
