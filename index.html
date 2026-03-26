@@ -6,22 +6,22 @@
 <title>Scott Campbell P.Eng — Mechanical Design Engineer</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  :root{--navy:#1a2332;--accent:#2563eb;--light:#f8f9fa;--muted:#6b7280;--border:#e5e7eb;--white:#ffffff}
+  :root{--navy:#1a2332;--accent:#2563eb;--light:#f8f9fa;--muted:#6b7280;--border:#e5e7eb}
   body{font-family:'Segoe UI',system-ui,sans-serif;color:#1f2937;background:#fff;line-height:1.6}
   a{color:var(--accent);text-decoration:none}
   nav{position:sticky;top:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:60px;z-index:100}
-  .nav-logo{font-weight:600;font-size:1rem;color:var(--navy)}
+  .nav-logo{font-weight:600;font-size:1rem;color:var(--navy);cursor:pointer}
   .nav-links{display:flex;gap:2rem;list-style:none}
-  .nav-links a{font-size:0.9rem;color:var(--muted);transition:color .2s}
+  .nav-links a{font-size:0.9rem;color:var(--muted);transition:color .2s;cursor:pointer}
   .nav-links a:hover{color:var(--navy)}
   section{padding:5rem 2rem;max-width:900px;margin:0 auto}
   .hero{padding:6rem 2rem 5rem;max-width:900px;margin:0 auto}
   .hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1rem}
   .hero p{font-size:1.1rem;color:var(--muted);max-width:560px;margin-bottom:2rem}
   .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn-primary{background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:opacity .2s}
-  .btn-primary:hover{opacity:.85;color:#fff}
-  .btn-outline{border:1px solid var(--border);color:var(--navy);padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:background .2s}
+  .btn-primary{background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:opacity .2s;cursor:pointer;border:none}
+  .btn-primary:hover{opacity:.85}
+  .btn-outline{border:1px solid var(--border);color:var(--navy);padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;transition:background .2s;cursor:pointer;background:transparent}
   .btn-outline:hover{background:var(--light)}
   .divider{border:none;border-top:1px solid var(--border);margin:0}
   h2{font-size:1.6rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
@@ -30,11 +30,9 @@
   .about-text p{color:#374151;margin-bottom:1rem;font-size:0.97rem}
   .about-stats{display:grid;gap:1rem}
   .stat-card{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
-  .stat-num{font-size:1.8rem;font-weight:600;color:var(--navy)}
-  .stat-label{font-size:0.8rem;color:var(--muted);margin-top:2px}
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
-  .project-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s}
-  .project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .project-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s, transform .2s;cursor:pointer}
+  .project-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.1);transform:translateY(-2px)}
   .project-img{height:160px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#9ca3af;font-size:0.8rem;letter-spacing:.04em}
   .project-body{padding:1.25rem}
   .project-tag{display:inline-block;font-size:0.72rem;font-weight:500;padding:2px 10px;border-radius:12px;margin-bottom:.6rem}
@@ -42,6 +40,7 @@
   .tag-personal{background:#f0fdf4;color:#16a34a}
   .project-body h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem}
   .project-body p{font-size:0.85rem;color:var(--muted);line-height:1.5}
+  .project-body .read-more{font-size:0.8rem;color:var(--accent);margin-top:.75rem;display:inline-block;font-weight:500}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
   .contact-text p{color:#374151;font-size:0.95rem;margin-bottom:1.5rem}
   .contact-links{display:flex;flex-direction:column;gap:.75rem}
@@ -54,31 +53,51 @@
   .contact-form button{background:var(--navy);color:#fff;padding:11px;border:none;border-radius:6px;font-size:0.9rem;font-weight:500;cursor:pointer;transition:opacity .2s}
   .contact-form button:hover{opacity:.85}
   footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:0.85rem;color:var(--muted)}
+
+  /* Project detail page */
+  #detail-page{display:none;max-width:900px;margin:0 auto;padding:3rem 2rem}
+  #detail-page.active{display:block}
+  #main-page.hidden{display:none}
+  .detail-back{display:inline-flex;align-items:center;gap:.5rem;font-size:0.9rem;color:var(--muted);cursor:pointer;margin-bottom:2rem;transition:color .2s}
+  .detail-back:hover{color:var(--navy)}
+  .detail-tag{display:inline-block;font-size:0.75rem;font-weight:500;padding:3px 12px;border-radius:12px;margin-bottom:1rem}
+  .detail-title{font-size:2rem;font-weight:600;color:var(--navy);margin-bottom:1rem}
+  .detail-desc{font-size:1rem;color:#374151;line-height:1.7;margin-bottom:2rem;max-width:700px}
+  .detail-photos{display:grid;gap:1rem;margin-bottom:2rem}
+  .detail-photos.cols-2{grid-template-columns:1fr 1fr}
+  .detail-photos.cols-3{grid-template-columns:1fr 1fr 1fr}
+  .detail-photo{background:#f3f4f6;border-radius:8px;height:220px;display:flex;align-items:center;justify-content:center;color:#9ca3af;font-size:0.8rem;overflow:hidden}
+  .detail-photo img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+
   @media(max-width:640px){
     .about-grid,.contact-grid{grid-template-columns:1fr}
     nav{padding:0 1rem}
     section,.hero{padding:3rem 1.2rem}
+    .detail-photos.cols-2,.detail-photos.cols-3{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <span class="nav-logo">Scott Campbell P.Eng</span>
+  <span class="nav-logo" onclick="showMain()">Scott Campbell P.Eng</span>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Resume</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a onclick="showMain();scrollTo('about')">About</a></li>
+    <li><a onclick="showMain();scrollTo('projects')">Projects</a></li>
+    <li><a onclick="showMain();scrollTo('skills')">Resume</a></li>
+    <li><a onclick="showMain();scrollTo('contact')">Contact</a></li>
   </ul>
 </nav>
+
+<!-- MAIN PAGE -->
+<div id="main-page">
 
 <div class="hero">
   <h1>Designing precision<br/>engineering solutions</h1>
   <p>Senior Mechanical Design Engineer with 8+ years of experience building products that are intuitive, manufacturable, and built to last.</p>
   <div class="hero-btns">
-    <a href="#projects" class="btn-primary">View my work</a>
-    <a href="#contact" class="btn-outline">Get in touch</a>
+    <button class="btn-primary" onclick="scrollTo('projects')">View my work</button>
+    <button class="btn-outline" onclick="scrollTo('contact')">Get in touch</button>
   </div>
 </div>
 
@@ -100,11 +119,11 @@
     </div>
     <div class="about-stats">
       <div class="stat-card">
-        <div class="stat-num" style="font-size:1rem;margin-bottom:.5rem">Professional</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem">Professional</div>
         <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">Senior Mechanical Design Engineer with 8+ years of experience. Named inventor on the patented Dolphin™ Electric Ring Cutter. Expertise in medical device design, SolidWorks, CNC machining, injection moulding, V&V, and regulatory compliance (ISO 14971, IEC 60601).</p>
       </div>
       <div class="stat-card">
-        <div class="stat-num" style="font-size:1rem;margin-bottom:.5rem">Personal</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:.5rem">Personal</div>
         <p style="font-size:0.85rem;color:var(--muted);line-height:1.6">When I'm not engineering at work, I'm engineering for fun. Past projects include converting a paddle boat into a Burning Man quadricycle, building out a camper van, and writing computer vision scripts on a Raspberry Pi. I love building things that shouldn't exist — but do.</p>
       </div>
     </div>
@@ -115,73 +134,100 @@
 
 <section id="projects">
   <h2>Projects</h2>
-  <p class="section-sub">A selection of engineering work across industries and scales.</p>
+  <p class="section-sub">Click any project to learn more.</p>
   <div class="projects-grid">
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('harvester')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Automated Cricket Harvester</h3>
-        <p>Designed and prototyped an automated cricket harvester as a Capstone project at Dalhousie University — selected as the top mechanical engineering project of 2018. The final design reduced harvesting time by 60% (~20 min per rearing bin). A patent was filed and the device is now used daily at Ovipost.</p>
+        <p>Top Capstone project at Dalhousie 2018. Reduced harvesting time by 60%. Patent filed, device in daily use at Ovipost.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('upwork')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Upwork Freelancing Projects</h3>
-        <p>Assisted clients with design conceptualisation, prototype building, engineering drawings, and feasibility evaluation. Recent projects include the design of a GPS-enabled tracking device. View profile at <a href="https://www.upwork.com/fl/scottcampbell37" target="_blank">upwork.com/fl/scottcampbell37</a>.</p>
+        <p>Design conceptualisation, prototyping, engineering drawings, and feasibility evaluation for clients worldwide.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('cvsizer')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Computer Vision Cricket Sizer</h3>
-        <p>Using Python OpenCV and a Raspberry Pi, wrote a script to accurately size live crickets in real time. Automated a previously time-consuming manual task, calculates population statistics automatically, and is now used in daily farm operations.</p>
+        <p>Python OpenCV + Raspberry Pi script to size live crickets in real time. Now used in daily farm operations.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('streetlight')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Streetlight Electronics Enclosure</h3>
-        <p>As a Co-op student at LED Roadway Lighting in Halifax, designed an IP67-rated electronics housing for streetlight sensor units and redesigned electrical connectors to improve ease of assembly. Gained experience in injection moulding, ingress protection, and ultrasonic welding.</p>
+        <p>IP67-rated electronics housing for LED streetlight sensor units. Designed during Co-op at LED Roadway Lighting, Halifax.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('supermileage')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Supermileage Design Team</h3>
-        <p>Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.</p>
+        <p>Chassis and bodywork design for a student supermileage vehicle, optimised for aerodynamic efficiency and minimal weight.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('van')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-personal">Personal</span>
         <h3>E-350 Mobile Camper Conversion</h3>
-        <p>In 2018, converted a Ford E-350 transport van into a mobile camper. Work included optimising interior layout for maximum space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.</p>
+        <p>Full camper conversion of a Ford E-350 — custom cabinetry, solar panels, and a full electrical system.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('quadricycle')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-personal">Personal</span>
         <h3>Quadricycle</h3>
-        <p>Designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it didn't go very fast and had terrible steering — it did float. A must in the desert!</p>
+        <p>Converted a paddle boat into a quadricycle for Burning Man 2019. Terrible steering. Did float. 10/10.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card">
+
+    <div class="project-card" onclick="showProject('teaching')">
       <div class="project-img">Image coming soon</div>
       <div class="project-body">
         <span class="project-tag tag-professional">Professional</span>
         <h3>Milescraft 360 Orbiter Teaching Aid</h3>
-        <p>Designed as part of a fourth-year CAD/CAM course at Dalhousie University to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. Responsible for design and CNC programming using Fusion 360 CAM software.</p>
+        <p>CAD/CAM course project at Dalhousie. Design and CNC programming using Fusion 360 to demonstrate the Orbiter drill attachment.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-    <div class="project-card" style="grid-column: 1 / -1;">
+
+    <div class="project-card" onclick="showProject('ringcutter')">
+      <div class="project-img">Image coming soon</div>
+      <div class="project-body">
+        <span class="project-tag tag-professional">Professional</span>
+        <h3>Ring Rescue Dolphin Ring Cutter</h3>
+        <p>Named inventor on the patented Dolphin™ Electric Ring Cutter. 45,000+ patients treated across North America.</p>
+        <span class="read-more">View project →</span>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="showProject('truckcamper')" style="grid-column:1/-1">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;padding:.75rem;background:#f3f4f6;">
         <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
         <div style="height:160px;background:#e5e7eb;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#9ca3af;">Image coming soon</div>
@@ -193,12 +239,11 @@
       <div class="project-body">
         <span class="project-tag tag-personal">Personal</span>
         <h3>Pop Up Truck Camper</h3>
-        <p>Designed and built a bed rail mounted truck camper with a custom pop-up roof from scratch. The entire project — from initial design through to fabrication — was completed by hand, including all TIG welding of the frame and structure. The pop-up top maximises headroom when camped while keeping the profile low for driving.</p>
+        <p>Designed and built a bed rail mounted truck camper with a custom pop-up roof from scratch — including all TIG welding.</p>
+        <span class="read-more">View project →</span>
       </div>
     </div>
-        <p>Designed a dolphin-shaped ring cutter tool for safe removal of rings from injured or swollen fingers, combining ergonomic form with reliable cutting function.</p>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -207,8 +252,9 @@
 <section id="skills">
   <h2>Resume</h2>
   <p class="section-sub">Download or view my full resume below.</p>
-  <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" download style="display:inline-block;margin-bottom:1.5rem;background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;text-decoration:none;">Download resume</a>
-  <iframe src="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" width="100%" height="800px" style="border:1px solid var(--border);border-radius:8px;" title="Scott Campbell Resume"></iframe>
+  <a href="https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf" target="_blank" style="display:inline-block;margin-bottom:1.5rem;background:var(--navy);color:#fff;padding:10px 24px;border-radius:6px;font-size:0.9rem;font-weight:500;">Open resume (PDF)</a>
+  <br/>
+  <iframe src="https://docs.google.com/viewer?url=https://scottucampbell.github.io/Scott%20Campbell%20-%20Resume.pdf&embedded=true" width="100%" height="800px" style="border:1px solid var(--border);border-radius:8px;" title="Scott Campbell Resume"></iframe>
 </section>
 
 <hr class="divider"/>
@@ -222,22 +268,10 @@
         <p>Whether you have a project in mind or just want to connect, feel free to reach out. I typically respond within one business day.</p>
       </div>
       <div class="contact-links">
-        <div class="contact-link">
-          <div class="contact-icon">✉️</div>
-          <span>scott@email.com</span>
-        </div>
-        <div class="contact-link">
-          <div class="contact-icon">💼</div>
-          <span>linkedin.com/in/scottcampbell</span>
-        </div>
-        <div class="contact-link">
-          <div class="contact-icon">📄</div>
-          <span>Download CV</span>
-        </div>
-        <div class="contact-link">
-          <div class="contact-icon">📍</div>
-          <span>Location</span>
-        </div>
+        <div class="contact-link"><div class="contact-icon">✉️</div><span>scott@email.com</span></div>
+        <div class="contact-link"><div class="contact-icon">💼</div><span>linkedin.com/in/scottcampbell</span></div>
+        <div class="contact-link"><div class="contact-icon">📄</div><span>Download CV</span></div>
+        <div class="contact-link"><div class="contact-icon">📍</div><span>Location</span></div>
       </div>
     </div>
     <div class="contact-form">
@@ -249,9 +283,108 @@
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Scott Campbell P.Eng · Mechanical Design Engineer</p>
-</footer>
+<footer><p>© 2026 Scott Campbell P.Eng · Mechanical Design Engineer</p></footer>
 
+</div><!-- end main-page -->
+
+<!-- DETAIL PAGE -->
+<div id="detail-page">
+  <span class="detail-back" onclick="showMain()">← Back to projects</span>
+  <span class="detail-tag" id="detail-tag"></span>
+  <h1 class="detail-title" id="detail-title"></h1>
+  <p class="detail-desc" id="detail-desc"></p>
+  <div class="detail-photos" id="detail-photos"></div>
+</div>
+
+<script>
+const projects = {
+  harvester: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Automated Cricket Harvester',
+    desc: 'Designed and prototyped an automated cricket harvester as a Capstone project at Dalhousie University — selected as the top mechanical engineering project of 2018. The final design reduced harvesting time by 60% (approximately 20 minutes per rearing bin). The machine uses computer vision to count crickets and pneumatic actuators to sort them efficiently. A patent was filed on the harvesting method and the device is now used in daily farming operations at Ovipost. Later, as a hardware design engineer at Ovipost, I continued development of this prototype.',
+    photos: 2
+  },
+  upwork: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Upwork Freelancing Projects',
+    desc: 'As a freelancer on Upwork, I have assisted clients with design conceptualisation, building prototypes, and preparing engineering drawings. I have also worked with clients to evaluate the feasibility of their proposed projects. One recent project included the design of a GPS-enabled tracking device. For more details and client reviews please visit upwork.com/fl/scottcampbell37.',
+    photos: 2, link: 'https://www.upwork.com/fl/scottcampbell37'
+  },
+  cvsizer: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Computer Vision Cricket Sizer',
+    desc: 'Utilising the Python OpenCV library and a Raspberry Pi, I wrote a script that accurately sizes live crickets in real time. This tool automated a task which was traditionally extremely time-consuming. The project included an enclosure and user interface, and allowed for more accurate measurements to be taken and population statistics to be automatically calculated. The tool is now used in daily farm operations.',
+    photos: 1
+  },
+  streetlight: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Streetlight Electronics Enclosure',
+    desc: 'As a Co-op student at LED Roadway Lighting in Halifax, I worked on a sensor enclosure for use on streetlights. I was responsible for the design of an electronics housing which was required to meet IP67 specifications. In addition, I worked on the redesign of electrical connectors to improve ease of assembly. Through this role, I gained experience designing parts for injection moulding, water/dust ingress protection, and ultrasonic welding.',
+    photos: 2
+  },
+  supermileage: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Supermileage Design Team',
+    desc: 'Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.',
+    photos: 2
+  },
+  van: {
+    tag: 'Personal', tagClass: 'tag-personal',
+    title: 'E-350 Mobile Camper Conversion',
+    desc: 'In 2018, I worked on the conversion of a Ford E-350 transport van into a mobile camper van. Work included determining the optimal layout to maximise interior space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.',
+    photos: 4
+  },
+  quadricycle: {
+    tag: 'Personal', tagClass: 'tag-personal',
+    title: 'Quadricycle',
+    desc: 'I designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it did not go very fast and had terrible steering, it did float. A must in the desert!',
+    photos: 3
+  },
+  teaching: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Milescraft 360 Orbiter Teaching Aid',
+    desc: 'This model was designed as part of a fourth-year CAD/CAM course at Dalhousie University. The project was designed to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. I was responsible for the design and CNC programming required to fabricate the individual parts. Toolpathing was generated using Fusion 360 CAM software.',
+    photos: 2
+  },
+  ringcutter: {
+    tag: 'Professional', tagClass: 'tag-professional',
+    title: 'Ring Rescue Dolphin Ring Cutter',
+    desc: 'Named inventor on the patented Dolphin™ Electric Ring Cutter — a device designed for the safe removal of rings from injured or swollen fingers. The design combines an ergonomic dolphin-shaped form with a reliable cutting mechanism. The device has now treated over 45,000 patients across North America.',
+    photos: 3
+  },
+  truckcamper: {
+    tag: 'Personal', tagClass: 'tag-personal',
+    title: 'Pop Up Truck Camper',
+    desc: 'Designed and built a bed rail mounted truck camper with a custom pop-up roof entirely from scratch. The entire project — from initial concept and design through to full fabrication — was completed by hand, including all TIG welding of the aluminium frame and structure. The pop-up top maximises headroom when camped while keeping the overall profile low for driving. Every component was designed, fabricated, and assembled personally.',
+    photos: 6
+  }
+};
+
+function showProject(id) {
+  const p = projects[id];
+  document.getElementById('detail-tag').textContent = p.tag;
+  document.getElementById('detail-tag').className = 'detail-tag ' + p.tagClass;
+  document.getElementById('detail-title').textContent = p.title;
+  document.getElementById('detail-desc').textContent = p.desc;
+  const grid = document.getElementById('detail-photos');
+  const cols = p.photos <= 2 ? 'cols-2' : 'cols-3';
+  grid.className = 'detail-photos ' + cols;
+  grid.innerHTML = Array(p.photos).fill(0).map(() =>
+    `<div class="detail-photo"><span style="font-size:0.8rem;color:#9ca3af">Image coming soon</span></div>`
+  ).join('');
+  document.getElementById('main-page').classList.add('hidden');
+  document.getElementById('detail-page').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function showMain() {
+  document.getElementById('main-page').classList.remove('hidden');
+  document.getElementById('detail-page').classList.remove('active');
+}
+
+function scrollTo(id) {
+  setTimeout(() => document.getElementById(id)?.scrollIntoView({behavior:'smooth'}), 50);
+}
+</script>
 </body>
 </html>
