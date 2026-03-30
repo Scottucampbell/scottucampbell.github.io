@@ -328,7 +328,7 @@ const projects = {
   streetlight:{tag:'Professional',tc:'tag-pro',title:'Streetlight Electronics Enclosure',desc:'As a Co-op student at LED Roadway Lighting in Halifax, I designed an IP67-rated electronics housing for streetlight sensor units and redesigned electrical connectors to improve ease of assembly. Gained experience in injection moulding, ingress protection, and ultrasonic welding.',photos:2},
   supermileage:{tag:'Professional',tc:'tag-pro',title:'Supermileage Design Team',desc:'Contributed to a student supermileage vehicle design team, working on chassis and bodywork design optimised for aerodynamic efficiency and minimal weight.',photos:2},
   van:{tag:'Personal',tc:'tag-per',title:'E-350 Mobile Camper Conversion',desc:'In 2018, I converted a Ford E-350 transport van into a mobile camper. Work included optimising interior layout for maximum space, building custom wooden cabinetry, installing solar panels, and designing and installing a full electrical system.',photos:4},
-  quadricycle:{tag:'Personal',tc:'tag-per',title:'Quadricycle',desc:'I designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it did not go very fast and had terrible steering, it did float. A must in the desert!',photos:3},
+  quadricycle:{tag:'Personal',tc:'tag-per',title:'Quadricycle',desc:'I designed and converted a paddle boat into a quadricycle for Burning Man 2019. While it did not go very fast and had terrible steering, it did float. A must in the desert!',photos:3,videos:['images/Pedal_boat_inmotion.mp4']},
   teaching:{tag:'Professional',tc:'tag-pro',title:'Milescraft 360 Orbiter Teaching Aid',desc:'Designed as part of a fourth-year CAD/CAM course at Dalhousie University to demonstrate the workings of the Milescraft 360 Orbiter drill attachment. Responsible for design and CNC programming using Fusion 360 CAM software.',photos:2},
   truckcamper:{tag:'Personal',tc:'tag-per',title:'Pop Up Truck Camper',desc:'Designed and built a bed rail mounted truck camper with a custom pop-up roof entirely from scratch. The entire project — from initial concept through to full fabrication — was completed by hand, including all TIG welding of the frame and structure.',photos:6}
 };
@@ -360,6 +360,17 @@ function goTo(page, id) {
         ? `<div class="photo-box" style="padding:0;overflow:hidden"><img src="${src}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover"/></div>`
         : `<div class="photo-box">Image coming soon</div>`;
     }).join('');
+    if(p.videos && p.videos.length) {
+      const vg = document.createElement('div');
+      vg.style.cssText = 'display:grid;gap:1rem;margin-bottom:2rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))';
+      vg.innerHTML = p.videos.map(v =>
+        `<video controls style="width:100%;border-radius:8px;background:#000;display:block" preload="metadata">
+          <source src="${v}" type="video/mp4"/>
+          Your browser does not support video playback.
+        </video>`
+      ).join('');
+      document.getElementById('p-photos').after(vg);
+    }
     document.getElementById('pg-project').classList.add('active');
     window.scrollTo(0,0);
   } else if(page === 'dolphin') {
