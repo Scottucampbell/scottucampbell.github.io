@@ -362,9 +362,9 @@ function goTo(page, id) {
     }).join('');
     if(p.videos && p.videos.length) {
       const vg = document.createElement('div');
-      vg.style.cssText = 'display:grid;gap:1rem;margin-bottom:2rem;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))';
+      vg.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:2rem';
       vg.innerHTML = p.videos.map(v =>
-        `<video controls style="width:100%;border-radius:8px;background:#000;display:block" preload="metadata">
+        `<video controls style="width:100%;max-width:560px;border-radius:8px;background:#000;display:block" preload="metadata">
           <source src="${v}" type="video/mp4"/>
           Your browser does not support video playback.
         </video>`
